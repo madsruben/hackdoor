@@ -3,12 +3,13 @@ import serial
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 from SimpleXMLRPCServer import SimpleXMLRPCRequestHandler
 
-#ser = serial.Serial('/dev/tty.usbserial', 9600)
-#ser = serial.Serial('/dev/cu.usbmodem1421', 9600)
-dev = "/dev/ttyACM"
-
 # sometimes the port falls out and the machine assigns a new port
 global ser
+#ser = serial.Serial('/dev/tty.usbserial', 9600)
+#ser = serial.Serial('/dev/cu.usbmodem1421', 9600)
+ser = serial.Serial('/dev/ttyACM1', 9600)
+dev = "/dev/ttyACM"
+
 # and that makes this little script a little ugly
 def check_serial():
    try:
