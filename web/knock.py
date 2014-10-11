@@ -23,7 +23,10 @@ def knock():
         try:
             ircText = '!! %s knocked at the door from %s. Please open.' % (person, request.remote_addr)
             s = xmlrpclib.ServerProxy('http://localhost:8000')
-            retCode = s.say('#oslohackerspace', ircText)
+            retcode = s.say('#oslohackerspace', ircText)
+        expect:
+            retcode = "no irc message"
+        try:
             t = xmlrpclib.ServerProxy('http://localhost:8101')
             ret2 = t.ring()
         except:
