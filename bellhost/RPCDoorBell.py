@@ -10,6 +10,9 @@ global ser
 ser = serial.Serial('/dev/ttyACM1', 9600)
 dev = "/dev/ttyACM"
 
+low = 1
+hi  = 9
+
 # and that makes this little script a little ugly
 def check_serial():
    try:
@@ -18,7 +21,7 @@ def check_serial():
       # nothing
       print "had no port, good thing we are reopening"
 
-   for port in range(0, 9):
+   for port in range(low, hi):
       print "doin it on "+ dev +str(port)
       try:
          ser = serial.Serial(dev+str(port), 9600)
