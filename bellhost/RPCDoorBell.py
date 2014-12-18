@@ -7,8 +7,8 @@ from SimpleXMLRPCServer import SimpleXMLRPCRequestHandler
 global ser
 #ser = serial.Serial('/dev/tty.usbserial', 9600)
 #ser = serial.Serial('/dev/cu.usbmodem1421', 9600)
-ser = serial.Serial('/dev/ttyACM1', 9600)
-dev = "/dev/ttyACM"
+#ser = serial.Serial('/dev/ttyACM1', 9600)
+dev = "/dev/ttyBELL"
 
 low = 1
 hi  = 9
@@ -21,13 +21,23 @@ def check_serial():
       # nothing
       print "had no port, good thing we are reopening"
 
+   print "doin it on " + dev
+   try:
+      ser = serial.Serial(dev, 9600)
+   except Exception as e:
+      print "port gone: " + str(e)
+   if not ser:
+      print "all ports gone, try again"
+   return ser
+    
+
    for port in range(low, hi):
       print "doin it on "+ dev +str(port)
       try:
          ser = serial.Serial(dev+str(port), 9600)
          break
-      except:
-         print "port gone"
+      except Exception as e:
+         print "port gone: " + str(e)
    if not ser:
       print "all ports are gone, silence"
    return ser
