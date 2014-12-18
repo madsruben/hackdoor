@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import serial
+import socket
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 from SimpleXMLRPCServer import SimpleXMLRPCRequestHandler
 
@@ -48,7 +49,8 @@ ser = check_serial()
 class RequestHandler(SimpleXMLRPCRequestHandler):
     rpc_paths = ('/RPC2',)
 
-server = SimpleXMLRPCServer(("0.0.0.0", 8000), requestHandler=RequestHandler)
+SimpleXMLRPCServer.address_family = socket.AF_INET6
+server = SimpleXMLRPCServer(("", 8000), requestHandler=RequestHandler)
 server.register_introspection_functions()
 
 def ringBell():
