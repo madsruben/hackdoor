@@ -1,0 +1,4 @@
+#!/bin/sh
+exec 2>&1
+cd root/bellhost
+exec setuidgid pi ./doorconn.sh
