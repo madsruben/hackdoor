@@ -6,7 +6,7 @@ from redis import Redis
 from flask import Flask, render_template, request
 def irc_say(msg):
     fd = open("/irc/server/in", "w")
-    fd.write("/j #oslohackerspace")
+    fd.write("/j #oslohackerspace\n")
     fd.close()
     fd = open("/irc/server/#oslohackerspace/in", "w")
     print("got %s, %s" % (fd, msg))
