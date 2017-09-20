@@ -1,0 +1,6 @@
+# we have two arduino
+#Bus 001 Device 006: ID 2341:0043 Arduino SA Uno R3 (CDC ACM)
+#Bus 001 Device 007: ID 2341:0043 Arduino SA Uno R3 (CDC ACM)
+
+ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", SUBSYSTEMS=="usb", ATTRS{serial}=="7413335343735191B181", ACTION=="add", KERNEL=="ttyACM*", SYMLINK+="ttyRFID"
+ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0043", SUBSYSTEMS=="usb", ATTRS{serial}=="7413335343735121B150", ACTION=="add", KERNEL=="ttyACM*", SYMLINK+="ttyBELL"

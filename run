@@ -1,7 +1,10 @@
 #!/bin/sh
-cd ~/doorbell
-sh doorconn.sh
+cd bellhost
 python RPCDoorBell.py &
 pid=$!
 sleep 2 && lua bell.lua
+./doorconn.sh
+cd ..
+python web/knock.py &
+
 wait $pid
